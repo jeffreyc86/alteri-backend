@@ -14,6 +14,17 @@ class UsersController < ApplicationController
         end 
     end
 
+    def google_login
+        @user = User.find_by(google_id: params[:google_id])
+        if @user
+            token = JWT.encode({ user_id: @user.id }, ENV['JWT_SECRET_KEY'], "HS256")
+            session[:user_id] = @user.id
+            render json: { user: UserSerializer.new(@user), token: token}
+        else
+            render json: { errors: ["There is no profile tied to that Google account. Please sign up instead."] }, status: :unauthorized
+        end 
+    end
+
 
     def signup
         if params[:image]
@@ -24,6 +35,15 @@ class UsersController < ApplicationController
                 first_name: params[:first_name].capitalize,
                 last_name: params[:last_name].capitalize,
                 photo_url: image["url"]
+            )
+        elsif params[:google_id]
+            @user = User.create(
+                email: params[:email],
+                password: params[:password],
+                first_name: params[:first_name],
+                last_name: params[:last_name],
+                photo_url: params[:photo_url],
+                google_id: params[:google_id]
             )
         else
             @user = User.create(
