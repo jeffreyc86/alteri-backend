@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :memberships
   resources :messages
   resources :conversations
-  resources :requests
   resources :request_items
 
   get "/show", to: "users#show"
@@ -13,6 +12,9 @@ Rails.application.routes.draw do
 
   get "/items", to: 'items#index'
 
+  post "/requests", to: "requests#create"
+
+  post "/request_items", to: "request_items#create"
 
 
   mount ActionCable.server => '/cable'
