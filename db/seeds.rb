@@ -1,13 +1,23 @@
 puts "Seeding Start"
 
-#Food Items
+
+#Pandemic Items
 
 Item.create(
-    name: "Bottled Water",
-    category: "Food",
-    image_url: "/images/item-icons/waterbottle.jpg",
-    multiple: true
+    name: "Face Masks",
+    category: "Pandemic Necessities",
+    image_url: "/images/item-icons/facemask.jpg",
+    multiple: false
 )
+
+Item.create(
+    name: "Hand Sanitizer",
+    category: "Pandemic Necessities",
+    image_url: "/images/item-icons/sanitizer.jpg",
+    multiple: false
+)
+
+#Food Items
 
 Item.create(
     name: "Candy / Gum",
@@ -37,6 +47,12 @@ Item.create(
     multiple: true
 )
 
+Item.create(
+    name: "Bottled Water",
+    category: "Food",
+    image_url: "/images/item-icons/waterbottle.jpg",
+    multiple: true
+)
 
 Item.create(
     name: "Hot Meal",
@@ -56,22 +72,6 @@ Item.create(
     name: "Juice",
     category: "Food",
     image_url: "/images/item-icons/juice.jpg",
-    multiple: false
-)
-
-#Pandemic Items
-
-Item.create(
-    name: "Face Masks",
-    category: "Pandemic Necessities",
-    image_url: "/images/item-icons/facemask.jpg",
-    multiple: false
-)
-
-Item.create(
-    name: "Hand Sanitizer",
-    category: "Pandemic Necessities",
-    image_url: "/images/item-icons/sanitizer.jpg",
     multiple: false
 )
 
