@@ -2,12 +2,14 @@ class RequestItemsController < ApplicationController
 
 
     def create
-        if params[:preference]
-            @request_item = RequestItem.create(item_id: params[:item_id], request_id: params[:request_id], quantity: params[:quantity], preference: params[:preference])
-        else
-            @request_item = RequestItem.create(item_id: params[:item_id], request_id: params[:request_id], quantity: params[:quantity])
-        end
+        RequestItem.create(request_item_params)
         render json: @request_item
+    end
+
+    private
+
+    def request_item_params
+        params.permit(:item_id, :request_id, :quantity, :preference)
     end
 
     

@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name
       t.string :photo_url
+      t.float :lat
+      t.float :lng
       t.boolean :deleted, default: false
       t.string :google_id
 

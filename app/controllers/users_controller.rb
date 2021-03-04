@@ -69,5 +69,15 @@ class UsersController < ApplicationController
         render json: @current_user
     end
 
+    def info
+        @user = User.find(params[:id])
+        render json: @user
+    end
+
+    def updatelocation
+        @user = User.find(params[:id])
+        @user.update(lat: params[:lat], lng: params[:lng])
+        render json: @user
+    end
 
 end
