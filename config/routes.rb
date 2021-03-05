@@ -15,12 +15,11 @@ Rails.application.routes.draw do
 
   get "/items", to: 'items#index'
 
-  get "/pendingrequests", to: "requests#pendingrequests"
   post "/requests", to: "requests#create"
+  get "/requests/:id", to: "requests#show"
+  get "/pendingrequests", to: "requests#pendingrequests"
   get "/usersrequests/:id", to: "requests#usersrequests"
-  
 
-  post "/request_items", to: "request_items#create"
 
 
 
