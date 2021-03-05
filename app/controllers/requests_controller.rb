@@ -43,14 +43,13 @@ class RequestsController < ApplicationController
         render json: @request
     end
 
-    def acceptRequest
+    def acceptrequest
         @request = Request.find(params[:id])
-        @request.update(accepted: true, donor_id: [:donor_id])
-        if @request.valid?
-            render json: @request
-        else
-            render json: @request.errors
-        end
+        @request.update(accepted: true, donor_id: params[:donor_id])
+        conversation = Conversation.create(request_id: @request.id)
+        Membership.create(conversation_id: conversation.id, user_id: @request.recipient_id)
+        Membership.create(conversation_id: conversation.id, user_id: @request.donor_id)
+        render json: {request: @request, conversation: conversation }
     end
 
 

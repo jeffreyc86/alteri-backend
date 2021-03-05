@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "/requests/:id", to: "requests#show"
   get "/pendingrequests", to: "requests#pendingrequests"
   get "/usersrequests/:id", to: "requests#usersrequests"
+  patch "/acceptrequest/:id", to: "requests#acceptrequest"
 
 
 
