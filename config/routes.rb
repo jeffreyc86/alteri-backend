@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
   resources :memberships
-  resources :messages
-  resources :conversations
   resources :request_items
 
   get "/users/:id", to: "users#info"
@@ -12,7 +10,6 @@ Rails.application.routes.draw do
   post "/googlelogin", to: "users#google_login"
   patch "/updatelocation/:id", to: "users#updatelocation"
 
-
   get "/items", to: 'items#index'
 
   post "/requests", to: "requests#create"
@@ -21,6 +18,10 @@ Rails.application.routes.draw do
   get "/usersrequests/:id", to: "requests#usersrequests"
   patch "/acceptrequest/:id", to: "requests#acceptrequest"
 
+  get "/getuserconvos/:id", to: "conversations#getuserconvos"
+
+  get "/getallmessages/:id", to: 'messages#getallmessages'
+  post "/messages", to: 'messages#create'
 
 
 

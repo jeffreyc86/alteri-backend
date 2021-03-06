@@ -9,13 +9,11 @@ module ApplicationCable
  
     private
 
-    def session
-      cookies.encrypted['_session_id'] || {}
-    end
-
     def find_verified_user
-      puts "SESSION USER ID: #{session['user_id']}"
-      if verified_user = User.find_by(id: session['user_id'])
+      token = request.params[:token]
+      payload = JWT.decode(token, ENV['JWT_SECRET_KEY'], true, {algorithm: 'HS256'})[0]
+      
+      if verified_user = User.find(payload["user_id"])
         verified_user
       else
         reject_unauthorized_connection
