@@ -1,26 +1,27 @@
 class RequestsController < ApplicationController
 
     def create
-        @request = Request.create(recipient_id: params[:recipient_id])
+        request = Request.create(recipient_id: params[:recipient_id])
 
             params[:selectedItems].each do |item|
                 if item[:preference]
                     RequestItem.create(
                         item_id: item[:id],
-                        request_id: @request.id,
+                        request_id: request.id,
                         quantity: item[:quantity],
                         preference: item[:preference]
                     )
                 else
                     RequestItem.create(
                         item_id: item[:id],
-                        request_id: @request.id,
+                        request_id: request.id,
                         quantity: item[:quantity],
                     )
                 end
             end
-
-        render json: @request
+        
+            render json: request
+            ActionCable.server.broadcast 'pending_requests_channel', RequestSerializer.new(request)
     end
 
     def usersrequests
@@ -47,9 +48,10 @@ class RequestsController < ApplicationController
         @request = Request.find(params[:id])
         @request.update(accepted: true, donor_id: params[:donor_id])
         conversation = Conversation.create(request_id: @request.id)
-        Membership.create(conversation_id: conversation.id, user_id: @request.recipient_id)
-        Membership.create(conversation_id: conversation.id, user_id: @request.donor_id)
-        render json: {request: @request, conversation: ConversationSerializer.new(conversation) }
+        recipient_membership = Membership.create(conversation_id: conversation.id, user_id: @request.recipient_id, last_read: Time.now)
+        donor_membership = Membership.create(conversation_id: conversation.id, user_id: @request.donor_id, last_read: Time.now)
+        RequestChannel.broadcast_to @request, [RequestSerializer.new(@request), MembershipSerializer.new(recipient_membership), ConversationSerializer.new(conversation)]
+        render json: {request: RequestSerializer.new(@request), conversation: ConversationSerializer.new(conversation), membership: MembershipSerializer.new(donor_membership) }
     end
 
 

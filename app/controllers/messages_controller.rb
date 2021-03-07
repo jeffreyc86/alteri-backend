@@ -13,9 +13,10 @@ class MessagesController < ApplicationController
         @message = Message.create(conversation_id: params[:conversation_id], user_id: params[:user_id], content: params[:content])
         
         conversation = @message.conversation
-        
+
         MessageChannel.broadcast_to conversation, MessageSerializer.new(@message)
         render json: @message
     end
+    
 
 end
