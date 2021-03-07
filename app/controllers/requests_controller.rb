@@ -49,7 +49,7 @@ class RequestsController < ApplicationController
         conversation = Conversation.create(request_id: @request.id)
         Membership.create(conversation_id: conversation.id, user_id: @request.recipient_id)
         Membership.create(conversation_id: conversation.id, user_id: @request.donor_id)
-        render json: {request: @request, conversation: conversation }
+        render json: {request: @request, conversation: ConversationSerializer.new(conversation) }
     end
 
 
