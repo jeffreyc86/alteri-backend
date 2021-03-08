@@ -14,6 +14,7 @@ class MessageChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
     stop_all_streams
+    puts "UNSUBSCRIBEDD " * 20
   end
 
 end

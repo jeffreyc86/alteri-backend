@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :memberships
-  resources :request_items
-
   get "/users/:id", to: "users#info"
   get "/show", to: "users#show"
   post "/signup", to: "users#signup"
@@ -17,11 +14,14 @@ Rails.application.routes.draw do
   get "/pendingrequests", to: "requests#pendingrequests"
   get "/usersrequests/:id", to: "requests#usersrequests"
   patch "/acceptrequest/:id", to: "requests#acceptrequest"
+  patch "/fulfillrequest/:id", to: 'requests#fulfillrequest'
 
   get "/getuserconvos/:id", to: "conversations#getuserconvos"
 
   get "/getallmessages/:id", to: 'messages#getallmessages'
   post "/messages", to: 'messages#create'
+
+  patch '/memberships/:id', to: 'memberships#update'
 
 
 

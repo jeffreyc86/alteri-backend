@@ -54,5 +54,11 @@ class RequestsController < ApplicationController
         render json: {request: RequestSerializer.new(@request), conversation: ConversationSerializer.new(conversation), membership: MembershipSerializer.new(donor_membership) }
     end
 
+    def fulfillrequest
+        @request = Request.find(params[:id])
+        @request.update(fulfilled: true)
+        render json: @request
+    end
+
 
 end
