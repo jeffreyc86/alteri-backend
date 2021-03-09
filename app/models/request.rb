@@ -42,6 +42,17 @@ class Request < ApplicationRecord
         end
     end
 
+    def donor_loc
+        if self.donor
+            {
+                lat: self.donor.lat,
+                lng: self.donor.lng
+            }
+        else
+            nil
+        end
+    end
+
 
 
     def created_date
