@@ -408,16 +408,6 @@ User.create(
 )
 
 User.create(
-    email: "homelessguy2@email.com",
-    password: "test1234",
-    first_name: "Nicholas",
-    last_name: "Clause",
-    photo_url: "https://res.cloudinary.com/dq7q4e3tx/image/upload/v1615335063/erxyzfioy2st0yltcogm.png",
-    lat: 40.7221,
-    lng: -73.9931
-)
-
-User.create(
     email: "selflessdonor@email.com",
     password: "test1234",
     first_name: "Antoinette",
