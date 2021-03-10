@@ -2,9 +2,9 @@ development:
   adapter: async
 
 test:
-  adapter: test
+  adapter: async
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  url: redis://redistogo:b445867f74621d314f45d44ceef575f8@scat.redistogo.com:11364/
   channel_prefix: alteri_backend_production
