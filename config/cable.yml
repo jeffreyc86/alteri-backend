@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:b445867f74621d314f45d44ceef575f8@scat.redistogo.com:11364/
+  url: redis://redistogo:34c0156b56cfddcf1defe373bfc119aa@scat.redistogo.com:11364/
   channel_prefix: alteri_backend_production
