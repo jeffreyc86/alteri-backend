@@ -219,8 +219,6 @@ GEM
       unf_ext
     unf (0.1.4-java)
     unf_ext (0.0.7.7)
-    unf_ext (0.0.7.7-x64-mingw32)
-    unf_ext (0.0.7.7-x86-mingw32)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-driver (0.7.3-java)
@@ -258,4 +256,4 @@ RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.2.14
