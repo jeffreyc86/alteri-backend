@@ -366,3 +366,63 @@ Item.create(
 )
 
 puts "Items Seeded 🍲👕📚"
+
+puts "Seeding Users 🧟‍♀️🧟🧟‍♂️"
+User.create(
+    email: "mortysadweeb@email.com",
+    password: "test1234",
+    first_name: "Rick",
+    last_name: "Sanchez",
+    photo_url: "https://res.cloudinary.com/dq7q4e3tx/image/upload/v1615335063/erxyzfioy2st0yltcogm.png",
+    lat: 40.7178,
+    lng: -74.0431
+)
+
+User.create(
+    email: "cowardlytinman@email.com",
+    password: "test1234",
+    first_name: "Dorothy",
+    last_name: "Oz",
+    photo_url: "https://res.cloudinary.com/dq7q4e3tx/image/upload/v1615336719/Screen_Shot_2021-03-09_at_7.38.09_PM_lv70nh.png",
+    lat: 40.7870,
+    lng: -73.9754
+)
+User.create(
+    email: "homelessguy@email.com",
+    password: "test1234",
+    first_name: "Harrison",
+    last_name: "Smith",
+    photo_url: "https://res.cloudinary.com/dq7q4e3tx/image/upload/v1615336720/Screen_Shot_2021-03-09_at_7.33.20_PM_twkieh.png",
+    lat: 40.8094,
+    lng: -73.8803
+)
+
+User.create(
+    email: "homelessguy2@email.com",
+    password: "test1234",
+    first_name: "Nicholas",
+    last_name: "Clause",
+    photo_url: "https://res.cloudinary.com/dq7q4e3tx/image/upload/v1615336720/Screen_Shot_2021-03-09_at_7.35.48_PM_fxesa0.png",
+    lat: 40.7178,
+    lng: -74.0431
+)
+
+User.create(
+    email: "homelessguy2@email.com",
+    password: "test1234",
+    first_name: "Nicholas",
+    last_name: "Clause",
+    photo_url: "https://res.cloudinary.com/dq7q4e3tx/image/upload/v1615335063/erxyzfioy2st0yltcogm.png",
+    lat: 40.7221,
+    lng: -73.9931
+)
+
+User.create(
+    email: "selflessdonor@email.com",
+    password: "test1234",
+    first_name: "Antoinette",
+    last_name: "Garcia",
+    photo_url: "https://res.cloudinary.com/dq7q4e3tx/image/upload/v1615336720/Screen_Shot_2021-03-09_at_7.37.19_PM_tu3ch4.png",
+    lat: 40.7081,
+    lng: -73.9571
+)
