@@ -57,6 +57,7 @@ class RequestsController < ApplicationController
     def fulfillrequest
         @request = Request.find(params[:id])
         @request.update(fulfilled: true)
+        RequestChannel.broadcast_to @request, {request: RequestSerializer.new(@request)}
         render json: @request
     end
 
